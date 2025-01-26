@@ -2,7 +2,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { StarIcon, GitBranchIcon, FolderOpenIcon as IssueOpenedIcon } from "lucide-react"
-import type { Project } from "@/app/api/projects"
+import type { Project } from "@/app/helpers/api"
 
 export function ProjectDetailsModal({ project }: { project: Project }) {
   return (
@@ -16,7 +16,7 @@ export function ProjectDetailsModal({ project }: { project: Project }) {
         <div className="space-y-4">
           <div className="flex items-center space-x-2">
             <StarIcon className="w-5 h-5" />
-            <span className="text-lg">{project.stars.toLocaleString()} stars</span>
+            <span className="text-lg">{project.stargazers_count.toLocaleString()} stars</span>
           </div>
           <div className="flex items-center space-x-2">
             <GitBranchIcon className="w-5 h-5" />
@@ -24,13 +24,14 @@ export function ProjectDetailsModal({ project }: { project: Project }) {
           </div>
           <div className="flex items-center space-x-2">
             <IssueOpenedIcon className="w-5 h-5" />
-            <span className="text-lg">Last updated: {new Date(project.lastUpdated).toLocaleDateString()}</span>
+            {/* <span className="text-lg">Last updated: {new Date(project.lastUpdated).toLocaleDateString()}</span> */}
           </div>
         </div>
         <div className="space-y-4">
           <Badge className="text-lg px-3 py-1">{project.language}</Badge>
           <div>
             <a
+              // href={project.svn_url}
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
