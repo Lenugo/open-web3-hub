@@ -147,6 +147,7 @@ export interface Release {
 export interface ProjectDetailsModalProps {
   project: Project
   releaseData?: Release | null
+  isLoading: boolean
 }
 
 export interface FetchProjectReleaseDataProps {

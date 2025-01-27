@@ -3,19 +3,19 @@ import { DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog
 import { Badge } from "@/components/ui/badge"
 import { StarIcon, GitBranchIcon, UsersIcon, GithubIcon, HomeIcon, TagIcon } from "lucide-react"
 import { DialogDescription } from "@radix-ui/react-dialog"
-import { Suspense } from "react"
 import { ProjectDetailsModalProps } from "@/app/helpers/interfaces"
 import ProjectDetailCard from "./ProjectDetailCard"
+import { CardImgSkeleton, DetailCardSkeleton } from "./Skeleton"
 
-export default function ProjectDetailsModal({ project, releaseData }: ProjectDetailsModalProps) {
+export default function ProjectDetailsModal({ project, releaseData, isLoading }: ProjectDetailsModalProps) {
   return (
     <DialogContent className="max-w-4xl">
       <DialogHeader className="space-y-2 border-b pb-4">
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-4">
-            {project.owner.avatar_url && (
+          <div className="flex flex-col sm:flex-row w-full items-center gap-4">
+            {project.owner.avatar_url ? (
               <img src={project.owner?.avatar_url} alt={project.name} className="size-20 sm:size-16 rounded-lg shadow-md" />
-            )}
+            ) : <CardImgSkeleton classnames="size-20 sm:size-16 rounded-lg shadow-md" />}
             <div className="flex-1">
               <div className="flex gap-x-8">
                 <DialogTitle className="text-3xl font-bold tracking-tight">{project.name}</DialogTitle>
@@ -56,23 +56,26 @@ export default function ProjectDetailsModal({ project, releaseData }: ProjectDet
           <ProjectDetailCard title="Stars" description={project.stargazers_count?.toLocaleString() || 0}>
             <StarIcon size={24} stroke="#fff000" />
           </ProjectDetailCard>
-          
-          <ProjectDetailCard title="Language" description={project.language}>
-            <GitBranchIcon size={24} stroke="red" />
-          </ProjectDetailCard>
-          
-          <ProjectDetailCard title="Watchers" description={project.watchers_count.toLocaleString()}>
-            <UsersIcon size={24} stroke="gray" />
-          </ProjectDetailCard>
 
-          <Suspense fallback={<p>loading...</p>}>
-            {releaseData?.tag_name && (
+          {project.language &&
+            <ProjectDetailCard title="Language" description={project.language}>
+              <GitBranchIcon size={24} stroke="red" />
+            </ProjectDetailCard>
+          }
+
+          {project.watchers_count &&
+            <ProjectDetailCard title="Watchers" description={project.watchers_count.toLocaleString()}>
+              <UsersIcon size={24} stroke="gray" />
+            </ProjectDetailCard>
+          }
+
+          {(isLoading) ?
+            <DetailCardSkeleton /> :
+            (!isLoading && releaseData?.tag_name) ?
               <ProjectDetailCard title="Latest Release" description={releaseData?.tag_name}>
                 <TagIcon size={24} color="#3e9392" />
-              </ProjectDetailCard>
-            )}
-          </Suspense>
-
+              </ProjectDetailCard> : null
+          }
         </div>
       </div>
 

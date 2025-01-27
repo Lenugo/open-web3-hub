@@ -7,7 +7,7 @@ export default function ProjectDetailCard({ children, title, description }: Proj
         {children}
         <span>{title}</span>
       </div>
-      <p className="text-lg font-semibold">{description}</p>
+      <p className="text-lg font-semibold truncate">{description}</p>
     </div>
   )
 }

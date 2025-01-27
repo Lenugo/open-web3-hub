@@ -8,10 +8,9 @@
 import { FetchProjectReleaseDataProps, ProjectResult } from "./interfaces";
 
 const headers = { 'Content-Type': 'application/json' }
-export const fetchProjectsData = async () => {
-
+export const fetchProjectsData = async ({ perPage = 10 } = {}) => {
   try {
-    const getProjects = await fetch(`${process.env.NEXT_PUBLIC_GITHUB_API_BASE}/search/repositories?q=topic:blockchain&per_page=20`, { headers })
+    const getProjects = await fetch(`${process.env.NEXT_PUBLIC_GITHUB_API_BASE}/search/repositories?q=topic:blockchain&per_page=${perPage}`, { headers })
     const projectsResult: ProjectResult = await getProjects.json()
 
     return projectsResult
