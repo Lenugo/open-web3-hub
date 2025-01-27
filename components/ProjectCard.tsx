@@ -1,14 +1,25 @@
+"use client"
+/* eslint-disable @next/next/no-img-element */
 import { Card, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { StarIcon } from "lucide-react"
-import type { Project } from "@/app/helpers/api"
+import { fetchProjectReleaseData } from "@/app/helpers/api"
 import { Dialog, DialogTrigger } from "@/components/ui/dialog"
-import { ProjectDetailsModal } from "./ProjectDetailModal"
+import ProjectDetailsModal from "./ProjectDetailModal"
+import { useState } from "react"
+import { Project, Release } from "@/app/helpers/interfaces"
 
-export function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({ project }: { project: Project }) {
+  const [realeaseData, setReleaseData] = useState<Release | null>(null)
+
+  const handleOpenModal = async (project: Project) => {
+    const result = await fetchProjectReleaseData({ organization: project.owner.login, repo: project.name })
+    setReleaseData(result)
+  }
+
   return (
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger asChild onClick={() => handleOpenModal(project)}>
         <Card className="flex rounded-3xl relative items-center h-44 p-4 hover:shadow-lg hover:cursor-pointer">
           <img src={project?.owner?.avatar_url} alt={project?.full_name} className="size-24 rounded-lg self-center" />
     
@@ -27,7 +38,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </CardContent>     
         </Card>
       </DialogTrigger>
-      <ProjectDetailsModal project={project} />
+      <ProjectDetailsModal project={project} releaseData={realeaseData} />
     </Dialog>
   )
 }
