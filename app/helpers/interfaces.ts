@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react"
+
 export interface ProjectResult {
   total_count: number
   incomplete_results: boolean
@@ -159,4 +161,28 @@ export interface ProjectDetailCardProps {
   children: React.ReactNode
   title: string
   description: string | number
+}
+
+export interface FetchProjectsDataProps {
+  perPage?: number;
+  search?: string;
+  sort?: 'updated' | 'pushed' | 'stars';
+  topics?: string[];
+}
+
+export interface SearchProjectsProps {
+  search: string
+  setSearch: Dispatch<SetStateAction<string>>
+  topics: string[]
+  sort: string
+  setSort: Dispatch<SetStateAction<"stars" | "updated">>
+  isLoading: boolean
+  totalCount: number
+  toggleTopic: (topic: string) => void
+}
+
+export interface CardContainerProps {
+  projects: ProjectResult | null
+  isLoading: boolean
+  loadProjects: () => void
 }

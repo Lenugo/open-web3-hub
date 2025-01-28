@@ -1,18 +1,18 @@
-
-// const params = {
-//   q: 'topic:javascript+topic:react',
-//   sort: 'stars',
-//   order: 'desc',
-// }
-
-import { FetchProjectReleaseDataProps, ProjectResult } from "./interfaces";
+import { FetchProjectReleaseDataProps, FetchProjectsDataProps, ProjectResult } from "./interfaces";
 
 const headers = { 'Content-Type': 'application/json' }
-export const fetchProjectsData = async ({ perPage = 10 } = {}) => {
-  try {
-    const getProjects = await fetch(`${process.env.NEXT_PUBLIC_GITHUB_API_BASE}/search/repositories?q=topic:blockchain&per_page=${perPage}`, { headers })
-    const projectsResult: ProjectResult = await getProjects.json()
 
+export const fetchProjectsData = async ({ perPage = 10, search = '', sort = 'stars', topics = ['blockchain'] }: FetchProjectsDataProps = {}) => {
+  try {
+    const topicsQuery = topics.map(topic => `topic:${topic}`).join('+');
+    const searchQuery = search ? `${search}+in:name+` : '';
+    const query = `${searchQuery}${topicsQuery}`;
+    
+    const getProjects = await fetch(
+      `${process.env.NEXT_PUBLIC_GITHUB_API_BASE}/search/repositories?q=${query}&sort=${sort}&per_page=${perPage}`,
+      { headers }
+    )
+    const projectsResult: ProjectResult = await getProjects.json()
     return projectsResult
   } catch (error) {
     console.log("error :>> ", error);

@@ -33,8 +33,18 @@ export function ProjectCardSkeleton() {
   )
 }
 
-export function CardImgSkeleton({ classnames }: { classnames?: string}) {
+export function CardBlankSkeleton({ classnames }: { classnames?: string}) {
   return (
     <Skeleton className={classnames} />
+  )
+}
+
+export function SearchReposSkeleton() {
+  return (
+    <div className="mb-6 space-y-4 max-w-[10rem]">
+      <h2 className="text-sm text-muted-foreground">
+        <Skeleton className="bg-muted p-4" />
+      </h2>
+    </div>
   )
 }
