@@ -14,6 +14,22 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Open Web3 Hub",
   description: "Discover and explore open source Web3 projects",
+  keywords: ['blockchain', 'web3', 'artificial intelligence', 'machine learning', 'nft'],
+  authors: [{ name: 'Lenugo' }],
+  openGraph: {
+    title: "Open Web3 Hub",
+    description: "Discover and explore open source Web3 projects",
+    url: "https://openweb3hub.example.com",
+    type: "website",
+    images: [
+      {
+        url: "https://openweb3hub.example.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Open Web3 Hub",
+      },
+    ],
+  },
 }
 
 export default function RootLayout({

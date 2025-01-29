@@ -7,7 +7,7 @@ import { XIcon, XCircleIcon } from "lucide-react"
 import { SearchReposSkeleton } from "./Skeleton"
 import { SearchProjectsProps } from "@/app/helpers/interfaces"
 
-export const mainTopics = ['blockchain', 'web3', 'dapps', 'ai', 'artificial-intelligence', 'artificial-neural-network', 'solidity', 'ethereum', 'solana', 'cardano', 'nft', 'cryptocurrency', 'erc-20', 'erc-721', 'smart-contract']
+export const mainTopics = ['blockchain', 'web3', 'dapps', 'ai', 'artificial-intelligence', 'machine-learning', 'artificial-neural-network', 'solidity', 'ethereum', 'solana', 'cardano', 'nft', 'cryptocurrency', 'erc-20', 'erc-721', 'smart-contract']
 
 export default function SearchProjects({ 
   search,
