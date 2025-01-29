@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
-import { StarIcon, GitBranchIcon, UsersIcon, GithubIcon, HomeIcon, TagIcon, RefreshCcw } from "lucide-react"
+import { StarIcon, GitBranchIcon, UsersIcon, GithubIcon, HomeIcon, TagIcon, RefreshCcw, GitForkIcon } from "lucide-react"
 import { DialogDescription } from "@radix-ui/react-dialog"
 import { ProjectDetailsModalProps } from "@/app/helpers/interfaces"
 import ProjectDetailCard from "./ProjectDetailCard"
@@ -52,6 +52,12 @@ export default function ProjectDetailsModal({ project, releaseData, isLoading }:
             </div>
           </div>
         </div>
+        {
+          project?.archived &&
+          <div className="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-2 md:p-4">
+            <span className="">This repository has been archived by the owner. It is now read-only.</span>
+          </div>
+        }
       </DialogHeader>
 
       <div className="space-y-6 my-2">
@@ -77,9 +83,16 @@ export default function ProjectDetailsModal({ project, releaseData, isLoading }:
             <UsersIcon size={24} stroke="gray" />
           </ProjectDetailCard>
 
-          <ProjectDetailCard title="Updated" description={formatDate(project.updated_at)}>
-            <RefreshCcw size={24} stroke="#ffaaaa" />
-          </ProjectDetailCard>
+          {
+            !project?.archived ? 
+            <ProjectDetailCard title="Updated" description={formatDate(project.updated_at)}>
+              <RefreshCcw size={24} stroke="#ffaaaa" />
+              </ProjectDetailCard> :
+              <ProjectDetailCard title="Forks" description={project.forks.toLocaleString()}>
+                <GitForkIcon size={24} stroke="#ffaaaa" />
+              </ProjectDetailCard>
+          }
+
 
           {(isLoading) ?
             <DetailCardSkeleton /> :
