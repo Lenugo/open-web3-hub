@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Web3 Open Source Projects Hub",
+  title: "Open Web3 Hub",
   description: "Discover and explore open source Web3 projects",
 }
 

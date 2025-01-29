@@ -7,13 +7,13 @@ import { XIcon, XCircleIcon } from "lucide-react"
 import { SearchReposSkeleton } from "./Skeleton"
 import { SearchProjectsProps } from "@/app/helpers/interfaces"
 
-export const mainTopics = ['blockchain', 'web3', 'dapps', 'ai', 'ethereum', 'solana', 'cardano', 'nft', 'cryptocurrency', 'smart-contract']
+export const mainTopics = ['blockchain', 'web3', 'dapps', 'ai', 'artificial-intelligence', 'artificial-neural-network', 'solidity', 'ethereum', 'solana', 'cardano', 'nft', 'cryptocurrency', 'erc-20', 'erc-721', 'smart-contract']
 
 export default function SearchProjects({ 
   search,
   setSearch,
   sort,
-  setSort,
+  handleSelectChange,
   topics,
   isLoading,
   totalCount,
@@ -38,7 +38,7 @@ export default function SearchProjects({
             )}
           </div>
           
-          <Select value={sort} onValueChange={(value: 'stars' | 'updated') => setSort(value)}>
+          <Select value={sort} onValueChange={handleSelectChange}>
             <SelectTrigger className="w-full md:w-[180px]">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>

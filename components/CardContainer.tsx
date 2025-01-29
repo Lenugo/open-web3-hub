@@ -13,18 +13,18 @@ export default function CardContainer({ projects, isLoading, loadProjects }: Car
         {(!projects || isLoading) ? (
           Array.from({ length: 8 }).map((_, index) => <ProjectCardSkeleton key={index} />)
         ) : (
-          projects.items.map((project: Project) => <ProjectCard key={project.id} project={project} />)
+          projects?.items?.map((project: Project) => <ProjectCard key={project.id} project={project} />)
         )}
       </div>
 
-      {(projects?.items.length !== 0 && !isLoading && projects) ? (
+      {(projects?.items?.length !== 0 && !isLoading && projects) ? (
         <Button
           className="w-full my-6 py-6 text-xl bg-primary hover:dark:bg-primary"
           onClick={loadProjects}
-          disabled={isLoading || projects.items.length >= projects.total_count}
+          disabled={isLoading || projects?.items?.length >= projects?.total_count}
         >
           {isLoading ? 'Loading...' :
-            projects.items.length >= projects.total_count ? 'No more projects' : 'Load more'}
+            projects?.items?.length >= projects?.total_count ? 'No more projects' : 'Load more'}
         </Button>
       ) : null}
 

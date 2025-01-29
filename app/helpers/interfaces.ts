@@ -175,7 +175,7 @@ export interface SearchProjectsProps {
   setSearch: Dispatch<SetStateAction<string>>
   topics: string[]
   sort: string
-  setSort: Dispatch<SetStateAction<"stars" | "updated">>
+  handleSelectChange: (value: "stars" | "updated") => void
   isLoading: boolean
   totalCount: number
   toggleTopic: (topic: string) => void

@@ -53,6 +53,11 @@ export default function ProjectsWrapper() {
     setPerPage(perPage + PER_PAGE)
   }
 
+  const handleSelectChange = (value: 'stars' | 'updated') => {
+    setSort(value)
+    setPerPage(PER_PAGE)
+  }
+
   useEffect(() => {
     loadProjects()
   }, [debouncedSearch, sort, topics, perPage])
@@ -64,7 +69,7 @@ export default function ProjectsWrapper() {
 
       <SearchProjects
         setSearch={setSearch}
-        setSort={setSort}
+        handleSelectChange={handleSelectChange}
         search={search}
         topics={topics}
         sort={sort}
