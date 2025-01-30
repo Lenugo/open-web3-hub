@@ -1,7 +1,5 @@
 ![Open Web3 Hub Logo](./public/open-web3-hub-logo.png)
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Open Web3 Hub
 
 Open Web3 Hub is a platform designed to help users discover and explore open-source Web3 and AI projects. It aims to boost efficiency, cut costs, and foster collaboration on open-source innovation.
