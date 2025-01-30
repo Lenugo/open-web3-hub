@@ -1,36 +1,17 @@
+![Open Web3 Hub Logo](./public/open-web3-hub-logo.png)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Open Web3 Hub
 
-First, run the development server:
+Open Web3 Hub is a platform designed to help users discover and explore open-source Web3 and AI projects. It aims to boost efficiency, cut costs, and foster collaboration on open-source innovation.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Project Discovery**: Easily find and explore a wide range of Web3 and AI projects.
+- **Search and Filter**: Use search and filter options to narrow down projects based on specific criteria.
+- **Responsive Design**: Enjoy a seamless experience across all devices.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Purpose
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The purpose of Open Web3 Hub is to provide a centralized platform for users to access and contribute to open-source projects in the Web3 and AI space. By facilitating project discovery and collaboration, the platform seeks to advance innovation and community-driven development.
