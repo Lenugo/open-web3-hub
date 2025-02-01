@@ -61,13 +61,11 @@ export default function ProjectDetailsModal({ project, releaseData, isLoading }:
       </DialogHeader>
 
       <div className="md:space-y-6 md:my-2">
-        <DialogDescription>
-          <div className="prose dark:prose-invert max-w-none">
-            <span className="text-xl font-semibold md:mb-2 block">About this project</span>
-            <span className="text-muted-foreground leading-relaxed text-sm md:text-md">{project.description}</span>
-          </div>
-        </DialogDescription>
-
+        <div className="prose dark:prose-invert max-w-none">
+          <span className="text-xl font-semibold md:mb-2 block">About this project</span>
+          <DialogDescription className="text-muted-foreground leading-relaxed text-sm md:text-md">{project.description}</DialogDescription>
+        </div>
+        
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4 w-full mt-2">
           <ProjectDetailCard title="Stars" description={project.stargazers_count?.toLocaleString()}>
             <StarIcon size={24} stroke="#fff000" />

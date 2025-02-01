@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Open Web3 Hub",
     description: "Discover and explore open source Web3 projects",
-    url: "https://openweb3hub.example.com",
+    url: "https://openweb3hub.vercel.app/",
     type: "website",
     images: [
       {
-        url: "https://openweb3hub.example.com/og-image.jpg",
+        url: "https://openweb3hub.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Open Web3 Hub",
