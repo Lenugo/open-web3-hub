@@ -19,7 +19,7 @@ export default function ProjectDetailsModal({ project, releaseData, isLoading }:
   }
 
   return (
-    <DialogContent className="h-screen sm:h-auto max-w-5xl">
+    <DialogContent className="h-5/6 sm:h-auto max-w-5xl">
       <DialogHeader className="sm:space-y-2 border-b sm:pb-4">
         <div className="flex items-center gap-4">
           <div className="flex flex-col sm:flex-row w-full items-center gap-2 sm:gap-4">
@@ -55,20 +55,20 @@ export default function ProjectDetailsModal({ project, releaseData, isLoading }:
         {
           project?.archived &&
           <div className="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-2 md:p-4">
-            <span className="">This repository has been archived by the owner. It is now read-only.</span>
+            <span className="text-sm md:text-md">This repository has been archived by the owner. It is now read-only.</span>
           </div>
         }
       </DialogHeader>
 
-      <div className="space-y-6 my-2">
+      <div className="md:space-y-6 md:my-2">
         <DialogDescription>
           <div className="prose dark:prose-invert max-w-none">
-            <span className="text-xl font-semibold mb-2 block">About this project</span>
-            <span className="text-muted-foreground leading-relaxed">{project.description}</span>
+            <span className="text-xl font-semibold md:mb-2 block">About this project</span>
+            <span className="text-muted-foreground leading-relaxed text-sm md:text-md">{project.description}</span>
           </div>
         </DialogDescription>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4 w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4 w-full mt-2">
           <ProjectDetailCard title="Stars" description={project.stargazers_count?.toLocaleString()}>
             <StarIcon size={24} stroke="#fff000" />
           </ProjectDetailCard>
@@ -105,9 +105,9 @@ export default function ProjectDetailsModal({ project, releaseData, isLoading }:
       </div>
 
       {project.topics && project.topics.length > 0 && (
-        <div className="border-t pt-2 mt-2">
-          <h4 className="font-semibold mb-3">Topics</h4>
-          <div className="flex flex-wrap gap-2 sm:gap-4">
+        <div className="border-t pt-2 md:mt-2 overflow-y-scroll">
+          <h4 className="font-semibold mb-1 md:mb-3">Topics</h4>
+          <div className="flex flex-wrap gap-1 sm:gap-4">
             {project.topics.map((topic) => (
               <div key={topic} className="break-inside-avoid mb-1.5">
                 <Badge variant="secondary" className="inline-flex items-center rounded-lg bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-blue-700/10 ring-inset">
