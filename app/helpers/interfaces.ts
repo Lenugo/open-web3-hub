@@ -164,10 +164,10 @@ export interface ProjectDetailCardProps {
 }
 
 export interface FetchProjectsDataProps {
-  perPage?: number;
-  search?: string;
-  sort?: 'updated' | 'pushed' | 'stars';
-  topics?: string[];
+  perPage?: number
+  search?: string
+  sort?: 'updated' | 'pushed' | 'stars'
+  topics?: string[]
 }
 
 export interface SearchProjectsProps {

@@ -10,12 +10,12 @@ import { CardBlankSkeleton, DetailCardSkeleton } from "./Skeleton"
 export default function ProjectDetailsModal({ project, releaseData, isLoading }: ProjectDetailsModalProps) {
   
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
+    const date = new Date(dateString)
     return new Intl.DateTimeFormat('en-US', {
       month: 'short',
       day: '2-digit',
       year: 'numeric'
-    }).format(date);
+    }).format(date)
   }
 
   return (
@@ -24,7 +24,7 @@ export default function ProjectDetailsModal({ project, releaseData, isLoading }:
         <div className="flex items-center gap-4">
           <div className="flex flex-col sm:flex-row w-full items-center gap-2 sm:gap-4">
             {project.owner.avatar_url ? (
-              <img src={project.owner?.avatar_url} alt={project.name} className="size-20 sm:size-16 rounded-lg shadow-md" />
+              <img src={project.owner?.avatar_url} alt={project.name} className="size-20 sm:size-16 rounded-lg shadow-md" loading="lazy" />
             ) : <CardBlankSkeleton classnames="size-20 sm:size-16 rounded-lg bg-muted shadow-md" />}
             <div className="flex-1">
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-8">

@@ -66,7 +66,7 @@ export default function SearchProjects({
         </div>
 
         <h3 className="text-sm text-muted-foreground">
-          {(isLoading) ? <SearchReposSkeleton /> : `Found ${totalCount.toLocaleString()} repositories`}
+          {(!totalCount || isLoading) ? <SearchReposSkeleton /> : `Found ${totalCount.toLocaleString()} repositories`}
         </h3>
       </div>
   )

@@ -1,4 +1,4 @@
-import { ProjectDetailCardProps } from "@/app/helpers/interfaces";
+import { ProjectDetailCardProps } from "@/app/helpers/interfaces"
 
 export default function ProjectDetailCard({ children, title, description }: ProjectDetailCardProps) {
   return (
