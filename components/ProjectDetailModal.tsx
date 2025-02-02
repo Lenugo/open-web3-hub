@@ -28,7 +28,7 @@ export default function ProjectDetailsModal({ project, releaseData, isLoading }:
             ) : <CardBlankSkeleton classnames="size-20 sm:size-16 rounded-lg bg-muted shadow-md" />}
             <div className="flex-1">
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-8">
-                <DialogTitle className="text-3xl font-bold tracking-tight max-w-[24rem] sm:max-w-max truncate">{project.name}</DialogTitle>
+                <DialogTitle className="text-3xl font-bold tracking-tight max-w-[24rem] sm:max-w-3xl truncate">{project.name}</DialogTitle>
                 <div className="flex items-center gap-3">
                   <a href={project.svn_url} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
                     <GithubIcon className="size-6" fill="black" />
@@ -91,8 +91,7 @@ export default function ProjectDetailsModal({ project, releaseData, isLoading }:
               </ProjectDetailCard>
           }
 
-
-          {(isLoading) ?
+          {(isLoading && !releaseData?.tag_name) ?
             <DetailCardSkeleton /> :
             (!isLoading && releaseData?.tag_name) ?
               <ProjectDetailCard title="Latest Release" description={releaseData?.tag_name}>
