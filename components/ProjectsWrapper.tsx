@@ -6,7 +6,7 @@ import SearchProjects from "./SearchProjects"
 import CardContainer from "./CardContainer"
 import ProjectHeader from "./ProjectHeader"
 import ErrorView from "./ErrorView"
-import { ProjectResult } from "@/app/helpers/interfaces"
+import { ProjectResult } from "@/helpers/interfaces"
 
 export default function ProjectsWrapper({ initialProjects }: { initialProjects: ProjectResult | null }) {
   const {
@@ -22,31 +22,27 @@ export default function ProjectsWrapper({ initialProjects }: { initialProjects: 
     handleMoreProjects,
   } = useProjects(initialProjects)
 
+  if (error) return <ErrorView message={error} />
+
   return (
     <section>
-      {error ? (
-        <ErrorView message={error} />
-      ) : (
-        <>
-          <ProjectHeader />
-          <SearchProjects
-            setSearch={setSearch}
-            handleSelectChange={handleSelectChange}
-            search={search}
-            topics={topics}
-            sort={sort}
-            toggleTopic={toggleTopic}
-            isLoading={isLoading}
-            totalCount={projects?.total_count ?? 0}
-          />
-          <CardContainer
-            projects={projects}
-            isLoading={isLoading}
-            loadProjects={handleMoreProjects}
-          />
-          <ScrollToTop />
-        </>
-      )}
+      <ProjectHeader />
+      <SearchProjects
+        setSearch={setSearch}
+        handleSelectChange={handleSelectChange}
+        search={search}
+        topics={topics}
+        sort={sort}
+        toggleTopic={toggleTopic}
+        isLoading={isLoading}
+        totalCount={projects?.total_count ?? 0}
+      />
+      <CardContainer
+        projects={projects}
+        isLoading={isLoading}
+        loadProjects={handleMoreProjects}
+      />
+      <ScrollToTop />
     </section>
   )
 }

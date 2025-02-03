@@ -1,6 +1,6 @@
 import ProjectCard from "@/components/ProjectCard"
 import { ProjectCardSkeleton } from "./Skeleton"
-import { Project, CardContainerProps } from "@/app/helpers/interfaces"
+import { Project, CardContainerProps } from "@/helpers/interfaces"
 import { Button } from "@/components/ui/button"
 
 export default function CardContainer({ projects, isLoading, loadProjects }: CardContainerProps) {

@@ -1,5 +1,5 @@
 import { FetchProjectReleaseDataProps, FetchProjectsDataProps, ProjectResult } from "./interfaces"
-import { mainTopics } from "@/components/SearchProjects"
+import { mainTopics } from "@/helpers/searchValues"
 
 const headers = { 'Content-Type': 'application/json' }
 

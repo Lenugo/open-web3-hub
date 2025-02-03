@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef } from "react"
-import { fetchProjectsData } from "@/app/helpers/api"
-import { ProjectResult } from "@/app/helpers/interfaces"
+import { fetchProjectsData } from "@/helpers/api"
+import { ProjectResult } from "@/helpers/interfaces"
 import { useDebounce } from "@/hooks/useDebounce"
-import { mainTopics } from "@/components/SearchProjects"
+import { PER_PAGE_INITIAL, sortTopics, mainTopics } from "@/helpers/searchValues"
 
 export function useProjects(initialProjects: ProjectResult | null) {
-  const PER_PAGE: number = 20
+  const PER_PAGE: number = PER_PAGE_INITIAL
   const [projects, setProjects] = useState<ProjectResult | null>(initialProjects || null)
   const [perPage, setPerPage] = useState<number>(PER_PAGE)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [search, setSearch] = useState<string>('')
-  const [sort, setSort] = useState<'stars' | 'updated'>('stars')
+  const [sort, setSort] = useState<sortTopics.stars | sortTopics.updated>(sortTopics.stars)
   const [topics, setTopics] = useState<string[]>([mainTopics[0]])
   const [debouncedSearch] = useDebounce(search, 600)
   const [loadMoreProjects, setLoadMoreProjects] = useState<boolean>(false)
@@ -58,7 +58,7 @@ export function useProjects(initialProjects: ProjectResult | null) {
     setPerPage(perPage + PER_PAGE)
   }
 
-  const handleSelectChange = (value: 'stars' | 'updated') => {
+  const handleSelectChange = (value: sortTopics.stars | sortTopics.updated) => {
     setSort(value)
     setPerPage(PER_PAGE)
   }

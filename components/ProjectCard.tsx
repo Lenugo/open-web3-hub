@@ -6,7 +6,7 @@ import { StarIcon } from "lucide-react"
 import { Dialog, DialogTrigger } from "@/components/ui/dialog"
 import ProjectDetailsModal from "./ProjectDetailModal"
 import { useState } from "react"
-import { Project } from "@/app/helpers/interfaces"
+import { Project } from "@/helpers/interfaces"
 import { CardBlankSkeleton } from "./Skeleton"
 import { useProjectRelease } from "@/hooks/useProjectRelease"
 

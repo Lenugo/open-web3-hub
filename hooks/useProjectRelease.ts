@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { fetchProjectReleaseData } from "@/app/helpers/api"
-import { Release, Project } from "@/app/helpers/interfaces"
+import { fetchProjectReleaseData } from "@/helpers/api"
+import { Release, Project } from "@/helpers/interfaces"
 
 export function useProjectRelease(project: Project) {
   const [releaseData, setReleaseData] = useState<Release | null>(null)

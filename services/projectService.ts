@@ -1,13 +1,14 @@
-import { fetchProjectsData } from "@/app/helpers/api"
-import { ProjectResult } from "@/app/helpers/interfaces"
+import { fetchProjectsData } from "@/helpers/api"
+import { ProjectResult } from "@/helpers/interfaces"
+import { mainTopics, PER_PAGE_INITIAL, sortTopics } from "@/helpers/searchValues"
 
 export async function getInitialProjectsData(): Promise<ProjectResult | null | {error: string}> {
   try {
     const initialData = await fetchProjectsData({
-      perPage: 20,
+      perPage: PER_PAGE_INITIAL,
       search: '',
-      sort: 'stars',
-      topics: ['blockchain'],
+      sort: sortTopics.stars,
+      topics: [mainTopics[0]],
     })
 
     if ('error' in initialData) {

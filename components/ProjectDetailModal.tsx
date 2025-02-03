@@ -3,7 +3,7 @@ import { DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog
 import { Badge } from "@/components/ui/badge"
 import { StarIcon, GitBranchIcon, UsersIcon, GithubIcon, HomeIcon, TagIcon, RefreshCcw, GitForkIcon } from "lucide-react"
 import { DialogDescription } from "@radix-ui/react-dialog"
-import { ProjectDetailsModalProps } from "@/app/helpers/interfaces"
+import { ProjectDetailsModalProps } from "@/helpers/interfaces"
 import ProjectDetailCard from "./ProjectDetailCard"
 import { CardBlankSkeleton, DetailCardSkeleton } from "./Skeleton"
 

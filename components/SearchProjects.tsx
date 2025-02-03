@@ -5,9 +5,8 @@ import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { XIcon, XCircleIcon } from "lucide-react"
 import { SearchReposSkeleton } from "./Skeleton"
-import { SearchProjectsProps } from "@/app/helpers/interfaces"
-
-export const mainTopics = ['blockchain', 'web3', 'dapps', 'ai', 'artificial-intelligence', 'machine-learning', 'artificial-neural-network', 'solidity', 'ethereum', 'solana', 'cardano', 'nft', 'cryptocurrency', 'wallet', 'erc-20', 'erc-721', 'smart-contract', 'smart-contract-tools']
+import { SearchProjectsProps } from "@/helpers/interfaces"
+import { mainTopics } from "@/helpers/searchValues"
 
 export default function SearchProjects({ 
   search,
@@ -66,7 +65,7 @@ export default function SearchProjects({
         </div>
 
         <h3 className="text-sm text-muted-foreground">
-          {(!totalCount || isLoading) ? <SearchReposSkeleton /> : `Found ${totalCount.toLocaleString()} repositories`}
+          {(isLoading) ? <SearchReposSkeleton /> : `Found ${totalCount.toLocaleString()} repositories`}
         </h3>
       </div>
   )
