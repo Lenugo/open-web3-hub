@@ -1,9 +1,9 @@
 import { FetchProjectReleaseDataProps, FetchProjectsDataProps, ProjectResult } from "./interfaces"
-import { mainTopics } from "@/helpers/searchValues"
+import { mainTopics, sortTopics } from "@/helpers/searchValues"
 
 const headers = { 'Content-Type': 'application/json' }
 
-export const fetchProjectsData = async ({ perPage = 10, search = '', sort = 'stars', topics = [mainTopics[0]] }: FetchProjectsDataProps = {}) => {
+export const fetchProjectsData = async ({ perPage = 10, search = '', sort = sortTopics.stars, topics = [mainTopics[0]] }: FetchProjectsDataProps = {}) => {
   try {
     const topicsQuery = topics.map(topic => `topic:${topic}`).join('+')
     const searchQuery = search ? `${search}+in:name+` : ''
