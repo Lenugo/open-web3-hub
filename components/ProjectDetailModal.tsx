@@ -60,7 +60,7 @@ export default function ProjectDetailsModal({ project, releaseData, isLoading }:
         }
       </DialogHeader>
 
-      <div className="md:space-y-6 md:my-2">
+      <div className="md:space-y-6 md:my-2 overflow-y-scroll">
         <div className="prose dark:prose-invert max-w-none">
           <span className="text-xl font-semibold md:mb-2 block">About this project</span>
           <DialogDescription className="text-muted-foreground leading-relaxed text-sm md:text-md">{project.description}</DialogDescription>
