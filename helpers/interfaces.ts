@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
-import { sortTopics } from "./searchValues"
+import { SORT_TOPICS } from "./searchValues"
 
 export interface ProjectResult {
   total_count: number
@@ -156,6 +156,7 @@ export interface ProjectDetailsModalProps {
 export interface FetchProjectReleaseDataProps {
   organization: string,
   repo: string
+  signal?: AbortSignal
 }
 
 export interface ProjectDetailCardProps {
@@ -167,8 +168,9 @@ export interface ProjectDetailCardProps {
 export interface FetchProjectsDataProps {
   perPage?: number
   search?: string
-  sort?: sortTopics.stars | sortTopics.updated
+  sort?: SORT_TOPICS
   topics?: string[]
+  signal?: AbortSignal
 }
 
 export interface SearchProjectsProps {
@@ -176,7 +178,7 @@ export interface SearchProjectsProps {
   setSearch: Dispatch<SetStateAction<string>>
   topics: string[]
   sort: string
-  handleSelectChange: (value: sortTopics.stars | sortTopics.updated) => void
+  handleSelectChange: (value: SORT_TOPICS) => void
   isLoading: boolean
   totalCount: number
   toggleTopic: (topic: string) => void

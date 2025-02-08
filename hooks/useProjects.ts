@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import { fetchProjectsData } from "@/helpers/api"
 import { ProjectResult } from "@/helpers/interfaces"
 import { useDebounce } from "@/hooks/useDebounce"
-import { PER_PAGE_INITIAL, sortTopics, mainTopics } from "@/helpers/searchValues"
+import { PER_PAGE_INITIAL, SORT_TOPICS, MAIN_TOPICS } from "@/helpers/searchValues"
 
 export function useProjects(initialProjects: ProjectResult | null) {
   const PER_PAGE: number = PER_PAGE_INITIAL
@@ -10,8 +10,8 @@ export function useProjects(initialProjects: ProjectResult | null) {
   const [perPage, setPerPage] = useState<number>(PER_PAGE)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [search, setSearch] = useState<string>('')
-  const [sort, setSort] = useState<sortTopics.stars | sortTopics.updated>(sortTopics.stars)
-  const [topics, setTopics] = useState<string[]>([mainTopics[0]])
+  const [sort, setSort] = useState<SORT_TOPICS>('starts')
+  const [topics, setTopics] = useState<string[]>([MAIN_TOPICS[0]])
   const [debouncedSearch] = useDebounce(search, 600)
   const [loadMoreProjects, setLoadMoreProjects] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
@@ -19,6 +19,8 @@ export function useProjects(initialProjects: ProjectResult | null) {
   const isInitialRender = useRef(true)
 
   const loadProjects = async (resetProjects = true) => {
+    const controller = new AbortController()
+
     try {
       setIsLoading(true)
       if (resetProjects) setProjects(null)
@@ -28,9 +30,10 @@ export function useProjects(initialProjects: ProjectResult | null) {
         search: debouncedSearch,
         sort,
         topics,
+        signal: controller.signal
       })
 
-      if ('error' in data) setError(data.error)
+      if ('error' in data) setError(data.error as string)
       else setProjects(data)
 
     } catch (error) {
@@ -39,6 +42,8 @@ export function useProjects(initialProjects: ProjectResult | null) {
     } finally {
       setIsLoading(false)
     }
+
+    return () => controller.abort()
   }
 
   const toggleTopic = (topic: string) => {
@@ -58,7 +63,7 @@ export function useProjects(initialProjects: ProjectResult | null) {
     setPerPage(perPage + PER_PAGE)
   }
 
-  const handleSelectChange = (value: sortTopics.stars | sortTopics.updated) => {
+  const handleSelectChange = (value: SORT_TOPICS) => {
     setSort(value)
     setPerPage(PER_PAGE)
   }

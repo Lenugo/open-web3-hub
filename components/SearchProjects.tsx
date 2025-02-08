@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { XIcon, XCircleIcon } from "lucide-react"
 import { SearchReposSkeleton } from "./Skeleton"
 import { SearchProjectsProps } from "@/helpers/interfaces"
-import { mainTopics } from "@/helpers/searchValues"
+import { MAIN_TOPICS } from "@/helpers/searchValues"
 
 export default function SearchProjects({ 
   search,
@@ -49,7 +49,7 @@ export default function SearchProjects({
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {mainTopics.map(topic => (
+          {MAIN_TOPICS.map(topic => (
             <Badge
               key={topic}
               variant={topics.includes(topic) ? 'default' : 'outline'}
