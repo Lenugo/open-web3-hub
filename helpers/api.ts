@@ -21,14 +21,14 @@ export const fetchProjectsData = async ({
     )
 
     if (!getProjects.ok) {
-      return { error: `Error: Something went wrong getting the data. Please try again later.` }
+      throw new Error('Something went wrong getting the data. Please try again later.')
     }
 
     const projectsResult: ProjectResult = await getProjects.json()
     return projectsResult
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') {
-      return { error: 'Request cancelled' }
+      throw new Error('Request cancelled')
     }
     return { error }
   }
@@ -43,14 +43,14 @@ export const fetchProjectReleaseData = async ({
     const getProject = await fetch(`${process.env.NEXT_PUBLIC_GITHUB_API_BASE}/repos/${organization}/${repo}/releases`, { headers, signal })
     
     if (!getProject.ok) {
-      return { error: `Error: Something went wrong getting the data. Please try again later.` }
+      throw new Error('Something went wrong getting the data. Please try again later.')
     }
 
     const projectResult: Release[] = await getProject.json()
     return projectResult[0] ?? []
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') {
-      return { error: 'Request cancelled' }
+      throw new Error('Request cancelled')
     }
     return { error }
   }
