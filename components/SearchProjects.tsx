@@ -18,35 +18,53 @@ export default function SearchProjects({
   totalCount,
   toggleTopic
 }: SearchProjectsProps) {
+  const itemsToSelect = [
+    { id: 'stars', label: 'Stars' },
+    { id: 'updated', label: 'Last Updated'}
+  ]
 
   return (
     <div className="mb-6 space-y-4">
-        <div className="flex flex-col sm:flex-row gap-4 w-full">
-          <div className="relative w-full">
-            <Input
-              placeholder="Search projects..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full pr-10"
+      <div className="flex flex-col sm:flex-row gap-4 w-full">
+        <div className="relative w-full">
+          <Input
+            placeholder="Search projects..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full pr-10"
+          />
+          {search && (
+            <XCircleIcon
+              onClick={() => setSearch('')}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-gray-700"
             />
-            {search && (
-              <XCircleIcon
-                onClick={() => setSearch('')}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-gray-700"
-              />
-            )}
-          </div>
-          
-          <Select value={sort} onValueChange={handleSelectChange}>
-            <SelectTrigger className="w-full md:w-[180px]">
-              <SelectValue placeholder="Sort by" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="stars">Stars</SelectItem>
-              <SelectItem value="updated">Last Updated</SelectItem>
-            </SelectContent>
-          </Select>
+          )}
         </div>
+        
+        <Select 
+          value={sort} 
+          onValueChange={handleSelectChange}
+          name="sort-projects"
+        >
+          <SelectTrigger 
+            className="w-full md:w-[180px]"
+            aria-label="Sort projects by"
+          >
+            <SelectValue placeholder="Sort by" />
+          </SelectTrigger>
+          <SelectContent>
+            {itemsToSelect.map(item => (
+              <SelectItem 
+                key={item.id} 
+                value={item.id}
+                aria-label={`Sort by ${item.label}`}
+              >
+                {item.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
 
         <div className="flex flex-wrap gap-2">
           {MAIN_TOPICS.map(topic => (

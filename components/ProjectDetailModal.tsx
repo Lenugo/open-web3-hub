@@ -24,7 +24,16 @@ export default function ProjectDetailsModal({ project, releaseData, isLoading }:
         <div className="flex items-center gap-4">
           <div className="flex flex-col sm:flex-row w-full items-center gap-2 sm:gap-4">
             {project.owner.avatar_url ? (
-              <img src={project.owner?.avatar_url} alt={project.name} className="size-20 sm:size-16 rounded-lg shadow-md" loading="lazy" />
+              <div className="relative w-20 sm:w-16 aspect-square">
+                <img 
+                  src={project.owner.avatar_url} 
+                  alt={project.name} 
+                  className="w-full h-full object-cover rounded-lg shadow-md"
+                  loading="lazy"
+                  width="80"
+                  height="80"
+                />
+              </div>
             ) : <CardBlankSkeleton classnames="size-20 sm:size-16 rounded-lg bg-muted shadow-md" />}
             <div className="flex-1">
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-8">

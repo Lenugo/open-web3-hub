@@ -24,7 +24,16 @@ export default function ProjectCard({ project }: { project: Project }) {
       <DialogTrigger asChild onClick={handleDialogTrigger}>
         <Card className="flex rounded-3xl relative items-center h-44 p-4 hover:shadow-lg hover:cursor-pointer">
           {project.owner.avatar_url ? (
-            <img src={project.owner.avatar_url} alt={project.full_name} className="size-24 rounded-lg self-center" loading="lazy" />
+            <div className="relative w-24 aspect-square">
+              <img 
+                src={project.owner.avatar_url} 
+                alt={project.full_name} 
+                className="w-full h-full object-cover rounded-lg"
+                loading="lazy"
+                width="96"
+                height="96"
+              />
+            </div>
           ) : <CardBlankSkeleton classnames="size-24 rounded-lg self-center bg-gray-500/20" />}
           <CardContent className="flex-grow pl-6 md:pl-8">
             <div className="my-2">
